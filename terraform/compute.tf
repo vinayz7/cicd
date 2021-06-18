@@ -17,8 +17,8 @@ data "aws_ami" "amazon-linux-2" {
 }
 
 resource "aws_instance" "jenkins-instance" {
-  ami             = data.aws_ami.amazon-linux-2.id
-  instance_type   = "t2.micro"
+  ami             = ami-05d72852800cbf29e
+  instance_type   = t3a.medium
   key_name        = var.keyname
   #vpc_id          = "${aws_vpc.development-vpc.id}"
   vpc_security_group_ids = [aws_security_group.sg_allow_ssh_jenkins.id]
@@ -26,6 +26,9 @@ resource "aws_instance" "jenkins-instance" {
   #name            = "${var.name}"
   user_data = file("install_jenkins.sh")
 
+  ebs {
+      volume_size = 20
+  }
   associate_public_ip_address = true
   tags = {
     Name = "Jenkins-Instance"
