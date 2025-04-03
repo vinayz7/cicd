@@ -1,0 +1,59 @@
+apiVersion: v1
+
+kind: Service
+
+metadata:
+
+ creationTimestamp: "2025-04-03T10:19:19Z"
+
+ labels:
+
+   app: tomcat-cicd
+
+ name: nodeservice
+
+ namespace: default
+
+ resourceVersion: "332180"
+
+ uid: d558427e-1f7d-4c38-b255-3cc9d97382fe
+
+spec:
+
+ clusterIP: 10.106.214.220
+
+ clusterIPs:
+
+ - 10.106.214.220
+
+ externalTrafficPolicy: Cluster
+
+ internalTrafficPolicy: Cluster
+
+ ipFamilies:
+
+ - IPv4
+
+ ipFamilyPolicy: SingleStack
+
+ ports:
+
+ - nodePort: 30821
+
+   port: 8080
+
+   protocol: TCP
+
+   targetPort: 8080
+
+ selector:
+
+   app: tomcat-cd
+
+ sessionAffinity: None
+
+ type: NodePort
+
+status:
+
+ loadBalancer: {}
