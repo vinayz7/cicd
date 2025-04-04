@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: tomcat-cd
-        image: vinayz7/dockerimg:latest
+        image: vinayz7/java-web-app-cicd2:latest
         ports:
         - containerPort: 8080
         imagePullPolicy: Always
